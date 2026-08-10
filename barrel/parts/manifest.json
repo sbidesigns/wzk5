@@ -1,0 +1,31 @@
+{
+  "$schema": "../../config/schemas/parts.schema.json",
+  "category": "parts",
+  "entries": [
+    {"id":"engine-street-1","slot":"engine","tier":"street","rarity":"common","brand":"stock","statMods":{"enginePower":1.05},"price":5000,"displayName":"Street Cam"},
+    {"id":"engine-street-2","slot":"engine","tier":"street","rarity":"common","brand":"stock","statMods":{"enginePower":1.08},"price":8000,"displayName":"Street Turbo"},
+    {"id":"engine-pro-1","slot":"engine","tier":"pro","rarity":"rare","brand":"apex","statMods":{"enginePower":1.15,"topSpeedKmh":1.05},"price":25000,"displayName":"Pro Turbo"},
+    {"id":"engine-pro-2","slot":"engine","tier":"pro","rarity":"rare","brand":"apex","statMods":{"enginePower":1.2,"topSpeedKmh":1.08},"price":40000,"displayName":"Pro Supercharger"},
+    {"id":"engine-extreme-1","slot":"engine","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"enginePower":1.3,"topSpeedKmh":1.1},"price":80000,"displayName":"Extreme Twin-Turbo"},
+    {"id":"engine-extreme-2","slot":"engine","tier":"extreme","rarity":"legendary","brand":"nova","statMods":{"enginePower":1.4,"topSpeedKmh":1.15,"boostMultiplier":1.1},"price":150000,"displayName":"Legendary Nova Engine"},
+    {"id":"transmission-street-1","slot":"transmission","tier":"street","rarity":"common","brand":"stock","statMods":{"acceleration":1.05},"price":4000,"displayName":"Street Clutch"},
+    {"id":"transmission-pro-1","slot":"transmission","tier":"pro","rarity":"rare","brand":"apex","statMods":{"acceleration":1.12,"maxSteer":1.05},"price":20000,"displayName":"Pro Short Shifter"},
+    {"id":"transmission-extreme-1","slot":"transmission","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"acceleration":1.2,"maxSteer":1.1},"price":70000,"displayName":"Extreme Sequential"},
+    {"id":"suspension-street-1","slot":"suspension","tier":"street","rarity":"common","brand":"stock","statMods":{"suspensionStiffness":1.1},"price":3000,"displayName":"Street Springs"},
+    {"id":"suspension-pro-1","slot":"suspension","tier":"pro","rarity":"rare","brand":"apex","statMods":{"suspensionStiffness":1.2,"suspensionDamping":1.15,"weightTransfer":0.9},"price":18000,"displayName":"Pro Coilovers"},
+    {"id":"suspension-extreme-1","slot":"suspension","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"suspensionStiffness":1.35,"suspensionDamping":1.25,"weightTransfer":0.75,"airPitchLerp":1.2},"price":60000,"displayName":"Extreme Active Suspension"},
+    {"id":"tires-street-1","slot":"tires","tier":"street","rarity":"common","brand":"stock","statMods":{"baseWheelFriction":1.05,"driftGripMultiplier":1.05},"price":3500,"displayName":"Street Sports"},
+    {"id":"tires-pro-1","slot":"tires","tier":"pro","rarity":"rare","brand":"apex","statMods":{"baseWheelFriction":1.1,"driftGripMultiplier":0.92,"lateralGripFloor":1.1},"price":15000,"displayName":"Pro Drift Compounds"},
+    {"id":"tires-pro-2","slot":"tires","tier":"pro","rarity":"rare","brand":"apex","statMods":{"baseWheelFriction":1.15,"slipAnglePeak":1.1},"price":17000,"displayName":"Pro Grip Compounds"},
+    {"id":"tires-extreme-1","slot":"tires","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"baseWheelFriction":1.2,"driftGripMultiplier":0.85,"lateralGripFloor":1.15,"slipAnglePeak":1.15},"price":55000,"displayName":"Extreme Slicks"},
+    {"id":"brakes-street-1","slot":"brakes","tier":"street","rarity":"common","brand":"stock","statMods":{},"price":2500,"displayName":"Street Pads"},
+    {"id":"brakes-pro-1","slot":"brakes","tier":"pro","rarity":"rare","brand":"apex","statMods":{"burnoutHeatRate":1.15,"burnoutTorqueBoost":1.1},"price":12000,"displayName":"Pro Big Brake Kit"},
+    {"id":"brakes-extreme-1","slot":"brakes","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"burnoutHeatRate":1.3,"burnoutTorqueBoost":1.2,"burnoutHeatThreshold":0.85},"price":45000,"displayName":"Extreme Carbon Ceramics"},
+    {"id":"body-street-1","slot":"body","tier":"street","rarity":"common","brand":"stock","statMods":{"chassisMass":0.95},"price":6000,"displayName":"Street Body Kit"},
+    {"id":"body-pro-1","slot":"body","tier":"pro","rarity":"rare","brand":"apex","statMods":{"chassisMass":0.88,"bodyRollFactor":0.9},"price":30000,"displayName":"Pro Widebody"},
+    {"id":"body-extreme-1","slot":"body","tier":"extreme","rarity":"legendary","brand":"nova","statMods":{"chassisMass":0.78,"bodyRollFactor":0.8,"ragdollThreshold":1.2},"price":120000,"displayName":"Extreme Carbon Widebody"},
+    {"id":"nitrous-street-1","slot":"nitrous","tier":"street","rarity":"common","brand":"stock","statMods":{"nitrousCapacity":1.2},"price":5000,"displayName":"Street Nitrous Kit"},
+    {"id":"nitrous-pro-1","slot":"nitrous","tier":"pro","rarity":"rare","brand":"apex","statMods":{"nitrousCapacity":1.5,"boostDuration":1.1},"price":22000,"displayName":"Pro Nitrous System"},
+    {"id":"nitrous-extreme-1","slot":"nitrous","tier":"extreme","rarity":"epic","brand":"nova","statMods":{"nitrousCapacity":2.0,"boostDuration":1.2,"boostMultiplier":1.15},"price":90000,"displayName":"Extreme Nitrous Express"}
+  ]
+}

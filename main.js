@@ -106,10 +106,24 @@ async function main() {
       { category: 'tracks',      manifestPath: './barrel/tracks/manifest.json' },
       { category: 'items',       manifestPath: './barrel/items/manifest.json' },
       { category: 'scenes',      manifestPath: './barrel/scenes/manifest.json' },
-      { category: 'screens',     manifestPath: './barrel/ui/screens/manifest.json' }
+      { category: 'screens',     manifestPath: './barrel/ui/screens/manifest.json' },
+      { category: 'parts',       manifestPath: './barrel/parts/manifest.json' }
     ];
     const barrelResults = await engine.loadBarrel('./barrel/', barrelManifests);
     console.log('[main] Barrel loaded:', barrelResults);
+
+    // Load parts catalog into GarageSystem
+    try {
+      const partsResp = await fetch('./barrel/parts/manifest.json');
+      if (partsResp.ok) {
+        const partsManifest = await partsResp.json();
+        engine.garage.setPartsCatalog(partsManifest.entries || []);
+        console.log('[main] Parts catalog loaded:', partsManifest.entries?.length, 'parts');
+      }
+    } catch (e) {
+      console.warn('[main] Parts catalog load failed:', e.message);
+    }
+
     if (bootProgress) bootProgress.style.width = '90%';
 
     // 8. Init UI shell + router

@@ -1,0 +1,15 @@
+{
+  "$id": "parts.schema.json",
+  "type": "object",
+  "required": ["id", "slot", "tier", "rarity", "price", "displayName"],
+  "properties": {
+    "id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "displayName": { "type": "string" },
+    "slot":        { "type": "string", "enum": ["engine", "transmission", "suspension", "tires", "brakes", "body", "nitrous"] },
+    "tier":        { "type": "string", "enum": ["street", "pro", "extreme"] },
+    "rarity":      { "type": "string", "enum": ["common", "rare", "epic", "legendary"] },
+    "brand":       { "type": "string", "enum": ["stock", "apex", "nova"] },
+    "price":       { "type": "integer", "minimum": 0 },
+    "statMods":    { "type": "object" }
+  }
+}

@@ -54,9 +54,19 @@ class RaceScene {
     const playerStart = [startPos.x, 1, startPos.z];
     // Apply character perk to vehicle entry (modifies a copy, not the manifest)
     const charEntry = characterId ? engine.resolver.resolve('characters', characterId) : null;
+    // Apply equipped parts via GarageSystem
+    const baseTuning = { ...vehEntry.entry.tuning };
+    const partsModifiedTuning = engine.garage
+      ? engine.garage.applyPartsToProfile(vehicleId, baseTuning)
+      : baseTuning;
+    // Apply paint
+    const paintColor = engine.garage?.getPaint?.(vehicleId);
+    const cosmetic = paintColor
+      ? { ...vehEntry.entry.cosmetic, bodyColor: paintColor }
+      : vehEntry.entry.cosmetic;
     const vehEntryWithPerk = charEntry?.entry?.passivePerk?.handlingMods
-      ? { ...vehEntry.entry, tuning: { ...vehEntry.entry.tuning, _charPerk: charEntry.entry.passivePerk.handlingMods } }
-      : vehEntry.entry;
+      ? { ...vehEntry.entry, tuning: { ...partsModifiedTuning, _charPerk: charEntry.entry.passivePerk.handlingMods }, cosmetic }
+      : { ...vehEntry.entry, tuning: partsModifiedTuning, cosmetic };
     this._player = vehEntry.module.spawn(vehEntryWithPerk, { engine, physics: engine.physics, renderer: engine.renderer, input: engine.input }, playerStart);
     // Store character perk for vehicle to apply
     if (this._player && charEntry?.entry?.passivePerk?.handlingMods) {

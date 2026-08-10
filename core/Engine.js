@@ -15,6 +15,7 @@ import { EntityManager } from './EntityManager.js';
 import { SceneManager } from './SceneManager.js';
 import { saveSystem } from './SaveSystem.js';
 import { progression } from './ProgressionSystem.js';
+import { garage } from './GarageSystem.js';
 
 class Engine {
   constructor() {
@@ -33,6 +34,7 @@ class Engine {
     this.scenes = new SceneManager();
     this.save = saveSystem;
     this.progression = progression;
+    this.garage = garage;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -68,6 +70,7 @@ class Engine {
     this.input.init(inputConfig);
     await this.save.init();
     this.progression.init(this.save);
+    this.garage.init(this.save, []); // catalog loaded later by main.js
 
     // Apply saved settings to subsystems
     this._applySavedSettings();
