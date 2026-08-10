@@ -21,6 +21,8 @@ import { battlePass } from './BattlePassSystem.js';
 import { botBackfill } from './BotBackfillSystem.js';
 import { mapVote } from './MapVoteSystem.js';
 import { modeTheme } from './ModeThemeSystem.js';
+import { replay } from './ReplaySystem.js';
+import { career } from './CareerSystem.js';
 
 class Engine {
   constructor() {
@@ -45,6 +47,8 @@ class Engine {
     this.botBackfill = botBackfill;
     this.mapVote = mapVote;
     this.modeTheme = modeTheme;
+    this.replay = replay;
+    this.career = career;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -84,6 +88,7 @@ class Engine {
     this.particles.init(this.renderer.getScene());
     this.battlePass.init(this.save);
     this.botBackfill.init(this.save);
+    this.career.init(this.save);
 
     // Apply saved settings to subsystems
     this._applySavedSettings();
