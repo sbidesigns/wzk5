@@ -1,0 +1,38 @@
+{
+  "_comment": "Audio asset manifest. URLs are CC0 sources. Download to assets/audio/ before production.",
+  "engine": {
+    "_comment": "Engine loops mapped to RPM bands. Crossfade between bands based on engineRPM (0-1).",
+    "bands": [
+      { "id": "idle",  "rpmMin": 0.0, "rpmMax": 0.2, "src": "assets/audio/engine-idle.mp3",  "source": "https://freesound.org/people/[search: engine idle loop CC0]", "loop": true, "volume": 0.6 },
+      { "id": "low",   "rpmMin": 0.2, "rpmMax": 0.5, "src": "assets/audio/engine-low.mp3",   "source": "https://freesound.org/people/[search: engine low rpm CC0]", "loop": true, "volume": 0.6 },
+      { "id": "mid",   "rpmMin": 0.5, "rpmMax": 0.8, "src": "assets/audio/engine-mid.mp3",    "source": "https://freesound.org/people/[search: engine mid rpm CC0]", "loop": true, "volume": 0.6 },
+      { "id": "high",  "rpmMin": 0.8, "rpmMax": 1.0, "src": "assets/audio/engine-high.mp3",   "source": "https://freesound.org/people/[search: engine high rpm CC0]", "loop": true, "volume": 0.7 }
+    ]
+  },
+  "sfx": {
+    "tire-screech":   { "src": "assets/audio/tire-screech.mp3",   "source": "https://freesound.org/people/[search: tire screech CC0]", "loop": true,  "volume": 0.5, "bus": "sfx" },
+    "burnout":        { "src": "assets/audio/burnout.mp3",         "source": "https://freesound.org/people/[search: burnout tire CC0]", "loop": true,  "volume": 0.6, "bus": "sfx" },
+    "boost-launch":   { "src": "assets/audio/boost-launch.mp3",   "source": "https://freesound.org/people/[search: boost whoosh CC0]", "loop": false, "volume": 0.7, "bus": "sfx" },
+    "mini-turbo":     { "src": "assets/audio/mini-turbo.mp3",     "source": "https://freesound.org/people/[search: boost sting CC0]",  "loop": false, "volume": 0.6, "bus": "sfx" },
+    "collision-hard": { "src": "assets/audio/collision-hard.mp3", "source": "https://freesound.org/people/[search: car crash CC0]",    "loop": false, "volume": 0.8, "bus": "sfx" },
+    "collision-soft": { "src": "assets/audio/collision-soft.mp3", "source": "https://freesound.org/people/[search: metal thud CC0]",   "loop": false, "volume": 0.5, "bus": "sfx" },
+    "item-pickup":    { "src": "assets/audio/item-pickup.mp3",    "source": "https://freesound.org/people/[search: item pickup CC0]", "loop": false, "volume": 0.6, "bus": "sfx" },
+    "landing":        { "src": "assets/audio/landing.mp3",        "source": "https://freesound.org/people/[search: landing thud CC0]", "loop": false, "volume": 0.5, "bus": "sfx" },
+    "ragdoll":        { "src": "assets/audio/ragdoll.mp3",        "source": "https://freesound.org/people/[search: crash scream CC0]", "loop": false, "volume": 0.7, "bus": "sfx" }
+  },
+  "ui": {
+    "ui.hover":     { "src": "assets/audio/ui-hover.mp3",   "source": "https://freesound.org/people/[search: ui hover CC0]",  "loop": false, "volume": 0.3, "bus": "ui" },
+    "ui.click":     { "src": "assets/audio/ui-click.mp3",   "source": "https://freesound.org/people/[search: ui click CC0]",  "loop": false, "volume": 0.4, "bus": "ui" },
+    "ui.confirm":   { "src": "assets/audio/ui-confirm.mp3", "source": "https://freesound.org/people/[search: ui confirm CC0]","loop": false, "volume": 0.5, "bus": "ui" },
+    "ui.navigate":  { "src": "assets/audio/ui-navigate.mp3","source": "https://freesound.org/people/[search: ui navigate CC0]","loop": false, "volume": 0.4, "bus": "ui" },
+    "ui.back":      { "src": "assets/audio/ui-back.mp3",    "source": "https://freesound.org/people/[search: ui back CC0]",   "loop": false, "volume": 0.4, "bus": "ui" }
+  },
+  "music": {
+    "menu":  { "src": "assets/audio/music-menu.mp3",  "source": "https://pixabay.com/music/[search: electronic ambient]", "loop": true,  "volume": 0.4, "bus": "music" },
+    "race":  { "src": "assets/audio/music-race.mp3",  "source": "https://pixabay.com/music/[search: high energy electronic]", "loop": true, "volume": 0.5, "bus": "music" },
+    "results": { "src": "assets/audio/music-results.mp3", "source": "https://pixabay.com/music/[search: triumphant]", "loop": true, "volume": 0.4, "bus": "music" }
+  },
+  "voice": {
+    "_comment": "Character voice lines — placeholder until voice assets sourced"
+  }
+}

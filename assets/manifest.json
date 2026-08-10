@@ -1,0 +1,52 @@
+{
+  "_comment": "Master asset manifest. Every external asset URL + license listed here. Download before production.",
+  "version": 1,
+  "audio": {
+    "manifest": "assets/audio/manifest.json",
+    "sources": [
+      { "name": "Freesound.org", "url": "https://freesound.org", "license": "CC0 / CC-BY (varies, check per sound)", "use": "Engine loops, tire screech, crash impacts, UI sounds" },
+      { "name": "Pixabay Music", "url": "https://pixabay.com/music/", "license": "Pixabay License (free for commercial use)", "use": "Background music" },
+      { "name": "Kenney Audio", "url": "https://kenney.nl/assets?q=audio", "license": "CC0", "use": "UI sounds, ambient effects" },
+      { "name": "ZapSplat", "url": "https://www.zapsplat.com", "license": "Free with attribution (account required)", "use": "Additional SFX" }
+    ]
+  },
+  "models": {
+    "sources": [
+      { "name": "Kenney Racing Kit", "url": "https://kenney.nl/assets/racing-kit", "license": "CC0", "use": "Vehicle models (car, truck, F1)" },
+      { "name": "Quaternius Ultimate Cars", "url": "https://quaternius.com/ultimatecars.html", "license": "CC0", "use": "Vehicle models (sports, muscle, ATV)" },
+      { "name": "Kenney City Kit", "url": "https://kenney.nl/assets/city-kit-suburb", "license": "CC0", "use": "Building models, road tiles, props" },
+      { "name": "Mixamo", "url": "https://www.mixamo.com", "license": "Free with Adobe account", "use": "Rigged character models + animations (idle, run, jump)" },
+      { "name": "Poly Pizza", "url": "https://poly.pizza", "license": "CC0", "use": "Searchable 3D model library" },
+      { "name": "Sketchfab", "url": "https://sketchfab.com", "license": "Varies (filter by Downloadable + CC0)", "use": "Specific models not found elsewhere" }
+    ]
+  },
+  "textures": {
+    "sources": [
+      { "name": "ambientCG", "url": "https://ambientcg.com", "license": "CC0", "use": "PBR textures (asphalt, metal, concrete, neon)" },
+      { "name": "Poly Haven", "url": "https://polyhaven.com", "license": "CC0", "use": "HDRIs for skybox lighting, PBR textures" },
+      { "name": "ShareTextures", "url": "https://www.sharetextures.com", "license": "CC0", "use": "PBR textures" }
+    ]
+  },
+  "fonts": {
+    "sources": [
+      { "name": "Google Fonts: Bebas Neue", "url": "https://fonts.google.com/specimen/Bebas+Neue", "license": "OFL", "use": "Display headings" },
+      { "name": "Google Fonts: Inter", "url": "https://fonts.google.com/specimen/Inter", "license": "OFL", "use": "Body text" },
+      { "name": "Google Fonts: JetBrains Mono", "url": "https://fonts.google.com/specimen/JetBrains+Mono", "license": "OFL", "use": "Numeric HUD, monospace data" }
+    ]
+  },
+  "vehicleModels": {
+    "_comment": "Map vehicle ID to GLTF model URL. null = use procedural fallback.",
+    "spectre":  null,
+    "titan":    null,
+    "vixen":    null,
+    "atv-01":   null,
+    "buggy-01": null,
+    "moto-01":  null,
+    "runner-01": null
+  },
+  "characterModels": {
+    "_comment": "Map character ID to Mixamo rig URL. null = use procedural humanoid fallback.",
+    "ace": null, "nova": null, "brick": null, "vex": null,
+    "jett": null, "rogue": null, "echo": null, "zero": null
+  }
+}

@@ -16,6 +16,7 @@ import { SceneManager } from './SceneManager.js';
 import { saveSystem } from './SaveSystem.js';
 import { progression } from './ProgressionSystem.js';
 import { garage } from './GarageSystem.js';
+import { particlePool } from './ParticlePool.js';
 
 class Engine {
   constructor() {
@@ -35,6 +36,7 @@ class Engine {
     this.save = saveSystem;
     this.progression = progression;
     this.garage = garage;
+    this.particles = particlePool;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -71,6 +73,7 @@ class Engine {
     await this.save.init();
     this.progression.init(this.save);
     this.garage.init(this.save, []); // catalog loaded later by main.js
+    this.particles.init(this.renderer.getScene());
 
     // Apply saved settings to subsystems
     this._applySavedSettings();
@@ -174,6 +177,9 @@ class Engine {
 
     // Update active scene
     this.scenes.update(dt);
+
+    // Update particles
+    this.particles.update(dt);
 
     // Render 3D
     if (currentSceneType === '3d' || currentSceneType === 'cutscene') {

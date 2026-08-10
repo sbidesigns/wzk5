@@ -102,6 +102,38 @@ class RaceScene {
     this._raceStarted = false;
 
     // Subscribe to events
+    this._unsubBus.push(engine.bus.on('vehicle:driftStart', ({ id }) => {
+      if (id !== this._player?.entry?.id) return;
+      const pos = this._player.physicsBody.position;
+      engine.particles.spawnBurst('smoke', { x: pos.x, y: 0.2, z: pos.z }, 3, { life: 0.8, spread: 1, upward: 0.5, startScale: 0.3, endScale: 1.5, startOpacity: 0.4 });
+    }));
+    this._unsubBus.push(engine.bus.on('vehicle:burnout', ({ id }) => {
+      if (id !== this._player?.entry?.id) return;
+      const pos = this._player.physicsBody.position;
+      engine.particles.spawnBurst('smoke', { x: pos.x, y: 0.2, z: pos.z - 1.5 }, 5, { life: 1.2, spread: 2, upward: 1, startScale: 0.4, endScale: 2.5, startOpacity: 0.6 });
+    }));
+    this._unsubBus.push(engine.bus.on('vehicle:miniTurbo', ({ id, charge, tier }) => {
+      if (id !== this._player?.entry?.id) return;
+      const pos = this._player.physicsBody.position;
+      engine.particles.spawnBurst('boost', { x: pos.x, y: 0.5, z: pos.z - 1.5 }, 8, { life: 0.6, spread: 1, upward: 0.3, startScale: 0.3, endScale: 1.5, startOpacity: 0.9 });
+    }));
+    this._unsubBus.push(engine.bus.on('vehicle:burnoutLaunch', ({ id, heat }) => {
+      if (id !== this._player?.entry?.id) return;
+      const pos = this._player.physicsBody.position;
+      engine.particles.spawnBurst('fire', { x: pos.x, y: 0.3, z: pos.z - 1.5 }, 12, { life: 0.5, spread: 1.5, upward: 1.5, startScale: 0.3, endScale: 1.2, startOpacity: 1.0 });
+    }));
+    this._unsubBus.push(engine.bus.on('vehicle:collide', ({ vehicle, impactStrength }) => {
+      if (vehicle !== this._player) return;
+      const pos = this._player.physicsBody.position;
+      if (impactStrength > 15) {
+        engine.particles.spawnBurst('spark', { x: pos.x, y: 0.8, z: pos.z }, 10, { life: 0.4, spread: 3, upward: 2, startScale: 0.1, endScale: 0.4, startOpacity: 1.0 });
+      }
+    }));
+    this._unsubBus.push(engine.bus.on('vehicle:landing', ({ id, impact }) => {
+      if (id !== this._player?.entry?.id) return;
+      const pos = this._player.physicsBody.position;
+      engine.particles.spawnBurst('dust', { x: pos.x, y: 0.1, z: pos.z }, 8, { life: 1.0, spread: 2, upward: 0.5, startScale: 0.4, endScale: 2.0, startOpacity: 0.6 });
+    }));
     this._unsubBus.push(engine.bus.on('item:used', ({ vehicleId, itemId }) => {
       const itemEntry = engine.resolver.resolve('items', itemId);
       if (!itemEntry) return;
