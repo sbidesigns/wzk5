@@ -18,6 +18,9 @@ import { progression } from './ProgressionSystem.js';
 import { garage } from './GarageSystem.js';
 import { particlePool } from './ParticlePool.js';
 import { battlePass } from './BattlePassSystem.js';
+import { botBackfill } from './BotBackfillSystem.js';
+import { mapVote } from './MapVoteSystem.js';
+import { modeTheme } from './ModeThemeSystem.js';
 
 class Engine {
   constructor() {
@@ -39,6 +42,9 @@ class Engine {
     this.garage = garage;
     this.particles = particlePool;
     this.battlePass = battlePass;
+    this.botBackfill = botBackfill;
+    this.mapVote = mapVote;
+    this.modeTheme = modeTheme;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -77,6 +83,7 @@ class Engine {
     this.garage.init(this.save, []); // catalog loaded later by main.js
     this.particles.init(this.renderer.getScene());
     this.battlePass.init(this.save);
+    this.botBackfill.init(this.save);
 
     // Apply saved settings to subsystems
     this._applySavedSettings();

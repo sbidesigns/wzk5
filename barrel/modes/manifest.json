@@ -6,6 +6,7 @@
       "id": "circuit",
       "displayName": "Circuit Race",
       "description": "Multi-lap race with position-based scoring. First across the line after 3 laps wins.",
+      "lobbyTheme": "ui_cinematic_garage",
       "playersMin": 1, "playersMax": 12, "estimatedDuration": 5,
       "matchConfig": { "laps": 3, "maxPlayers": 12, "allowItems": true, "allowCombat": true },
       "module": "./mode.circuit.js"
@@ -22,6 +23,7 @@
       "id": "drift",
       "displayName": "Drift Challenge",
       "description": "Score based on drift angle x duration x speed. Combo system for chaining drifts.",
+      "lobbyTheme": "ui_underground_tunnel",
       "playersMin": 1, "playersMax": 12, "estimatedDuration": 1.5,
       "matchConfig": { "laps": 0, "maxPlayers": 1, "allowItems": false, "allowCombat": false, "timeLimitSec": 90 },
       "module": "./mode.drift.js"
@@ -38,6 +40,7 @@
       "id": "battle-royale",
       "displayName": "Battle Royale",
       "description": "Shrinking arena forcefield. Last vehicle operational wins. Scavenge for items.",
+      "lobbyTheme": "ui_battle_royale",
       "playersMin": 8, "playersMax": 64, "estimatedDuration": 15,
       "matchConfig": { "laps": 0, "maxPlayers": 64, "allowItems": true, "allowCombat": true, "arenaSize": 500, "minArenaSize": 50, "shrinkRate": 20 },
       "module": "./mode.battleRoyale.js"
@@ -46,6 +49,7 @@
       "id": "team-relay",
       "displayName": "Team Relay",
       "description": "2v2 or 3v3 tag mechanic. Team-based racing with baton-pass style transitions.",
+      "lobbyTheme": "ui_party_mode",
       "playersMin": 4, "playersMax": 6, "estimatedDuration": 6,
       "matchConfig": { "laps": 2, "maxPlayers": 6, "allowItems": true, "allowCombat": false, "teams": 2 },
       "module": "./mode.teamRelay.js"
@@ -62,6 +66,7 @@
       "id": "derby",
       "displayName": "Derby Arena",
       "description": "Destruction arena with health bars. Last vehicle moving wins.",
+      "lobbyTheme": "ui_neon_arena",
       "playersMin": 4, "playersMax": 12, "estimatedDuration": 10,
       "matchConfig": { "laps": 0, "maxPlayers": 12, "allowItems": false, "allowCombat": true, "arenaType": "standard" },
       "module": "./mode.derby.js"
