@@ -14,6 +14,7 @@ import { AudioManager } from './AudioManager.js';
 import { EntityManager } from './EntityManager.js';
 import { SceneManager } from './SceneManager.js';
 import { saveSystem } from './SaveSystem.js';
+import { progression } from './ProgressionSystem.js';
 
 class Engine {
   constructor() {
@@ -31,6 +32,7 @@ class Engine {
     this.entities = new EntityManager();
     this.scenes = new SceneManager();
     this.save = saveSystem;
+    this.progression = progression;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -65,6 +67,7 @@ class Engine {
     await this.audio.init(engineConfig.audio);
     this.input.init(inputConfig);
     await this.save.init();
+    this.progression.init(this.save);
 
     // Apply saved settings to subsystems
     this._applySavedSettings();

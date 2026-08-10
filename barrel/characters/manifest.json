@@ -6,49 +6,89 @@
       "id": "ace",
       "displayName": "Ace Rourke",
       "archetype": "racer",
-      "signatureAbility": {
-        "id": "perfect-start",
-        "displayName": "Perfect Start",
-        "cooldownMs": 0,
-        "durationMs": 1500,
-        "description": "Hit throttle within 0.2s of green light for a 1.5x launch boost."
-      },
+      "signatureAbility": { "id": "perfect-start", "displayName": "Perfect Start", "cooldownMs": 0, "durationMs": 1500, "description": "Hit throttle within 0.2s of green light for a 1.5x launch boost." },
+      "passivePerk": { "id": "slipstream", "displayName": "Slipstream", "description": "+20% slip angle tolerance, +10% mini-turbo charge rate", "handlingMods": { "slipAnglePeak": 1.2, "driftChargeRate": 1.1 } },
       "stats": { "aggression": 5, "focus": 8, "luck": 5 },
       "unlock": { "type": "default" },
-      "cosmetic": { "color": "#ff4d2e" },
+      "cosmetic": { "color": "#ff4d2e", "skinTone": "#e0b090", "hasHelmet": false },
       "module": "./character.ace.js"
     },
     {
       "id": "nova",
       "displayName": "Nova Kade",
       "archetype": "trickster",
-      "signatureAbility": {
-        "id": "drift-master",
-        "displayName": "Drift Master",
-        "cooldownMs": 8000,
-        "durationMs": 4000,
-        "description": "Next drift fills mini-turbo at 2x rate."
-      },
+      "signatureAbility": { "id": "drift-master", "displayName": "Drift Master", "cooldownMs": 8000, "durationMs": 4000, "description": "Next drift fills mini-turbo at 2x rate." },
+      "passivePerk": { "id": "grip-master", "displayName": "Grip Master", "description": "+15% lateral grip floor, drift lasts 30% longer before spinout", "handlingMods": { "lateralGripFloor": 1.15, "driftGripMultiplier": 1.1 } },
       "stats": { "aggression": 4, "focus": 6, "luck": 8 },
       "unlock": { "type": "default" },
-      "cosmetic": { "color": "#00e5ff" },
+      "cosmetic": { "color": "#00e5ff", "skinTone": "#f0c0a0", "hasHelmet": true },
       "module": "./character.nova.js"
     },
     {
       "id": "brick",
       "displayName": "Brick Stone",
       "archetype": "bruiser",
-      "signatureAbility": {
-        "id": "ram-charge",
-        "displayName": "Ram Charge",
-        "cooldownMs": 12000,
-        "durationMs": 2000,
-        "description": "Mass x2 for 2s; collisions deal knockback."
-      },
+      "signatureAbility": { "id": "ram-charge", "displayName": "Ram Charge", "cooldownMs": 12000, "durationMs": 2000, "description": "Mass x2 for 2s; collisions deal knockback." },
+      "passivePerk": { "id": "heavy-hitter", "displayName": "Heavy Hitter", "description": "+50% collision damage to opponents, -10% own damage taken", "handlingMods": { "chassisMass": 1.2, "ragdollThreshold": 1.1 } },
       "stats": { "aggression": 9, "focus": 4, "luck": 4 },
       "unlock": { "type": "level", "value": 10 },
-      "cosmetic": { "color": "#ffd23f" },
+      "cosmetic": { "color": "#ffd23f", "skinTone": "#d0a080", "hasHelmet": false },
       "module": "./character.brick.js"
+    },
+    {
+      "id": "vex",
+      "displayName": "Vex Marlowe",
+      "archetype": "booster",
+      "signatureAbility": { "id": "overdrive", "displayName": "Overdrive", "cooldownMs": 15000, "durationMs": 3000, "description": "Boost meter refills instantly and lasts 3s." },
+      "passivePerk": { "id": "boost-king", "displayName": "Boost King", "description": "+25% boost duration, +10% boost multiplier", "handlingMods": { "boostDuration": 1.25, "boostMultiplier": 1.1 } },
+      "stats": { "aggression": 7, "focus": 7, "luck": 5 },
+      "unlock": { "type": "level", "value": 15 },
+      "cosmetic": { "color": "#9b2dff", "skinTone": "#c09070", "hasHelmet": true },
+      "module": "./character.ace.js"
+    },
+    {
+      "id": "jett",
+      "displayName": "Jett Reyes",
+      "archetype": "flyer",
+      "signatureAbility": { "id": "air-surge", "displayName": "Air Surge", "cooldownMs": 10000, "durationMs": 2000, "description": "Double jump in mid-air; air control doubled for 2s." },
+      "passivePerk": { "id": "air-surfer", "displayName": "Air Surfer", "description": "+40% air control authority, landing squash reduced 50%", "handlingMods": { "airControlAuthority": 1.4, "landingSquash": 0.5 } },
+      "stats": { "aggression": 6, "focus": 7, "luck": 7 },
+      "unlock": { "type": "level", "value": 20 },
+      "cosmetic": { "color": "#00e5ff", "skinTone": "#e0b090", "hasHelmet": true },
+      "module": "./character.nova.js"
+    },
+    {
+      "id": "rogue",
+      "displayName": "Rogue Vance",
+      "archetype": "burnout",
+      "signatureAbility": { "id": "smoke-screen", "displayName": "Smoke Screen", "cooldownMs": 20000, "durationMs": 5000, "description": "Drop a smoke cloud that blinds opponents behind." },
+      "passivePerk": { "id": "burnout-pro", "displayName": "Burnout Pro", "description": "Burnout heat accumulates 50% faster, launch boost +30%", "handlingMods": { "burnoutHeatRate": 1.5, "burnoutTorqueBoost": 1.3 } },
+      "stats": { "aggression": 8, "focus": 5, "luck": 6 },
+      "unlock": { "type": "level", "value": 25 },
+      "cosmetic": { "color": "#ff6b35", "skinTone": "#d0a080", "hasHelmet": false },
+      "module": "./character.brick.js"
+    },
+    {
+      "id": "echo",
+      "displayName": "Echo Sato",
+      "archetype": "collector",
+      "signatureAbility": { "id": "item-rush", "displayName": "Item Rush", "cooldownMs": 12000, "durationMs": 0, "description": "Instantly gain 3 items." },
+      "passivePerk": { "id": "item-magnet", "displayName": "Item Magnet", "description": "Item box pickup radius +100%, item drop rate +15%", "handlingMods": {} },
+      "stats": { "aggression": 4, "focus": 8, "luck": 9 },
+      "unlock": { "type": "level", "value": 30 },
+      "cosmetic": { "color": "#ff2edf", "skinTone": "#f0c0a0", "hasHelmet": true },
+      "module": "./character.ace.js"
+    },
+    {
+      "id": "zero",
+      "displayName": "Zero Kaine",
+      "archetype": "speedster",
+      "signatureAbility": { "id": "phase-shift", "displayName": "Phase Shift", "cooldownMs": 18000, "durationMs": 1500, "description": "Phase through collisions for 1.5s." },
+      "passivePerk": { "id": "silent-runner", "displayName": "Silent Runner", "description": "+20% top speed, -10% acceleration (tradeoff)", "handlingMods": { "topSpeedKmh": 1.2, "enginePower": 0.9 } },
+      "stats": { "aggression": 7, "focus": 9, "luck": 4 },
+      "unlock": { "type": "level", "value": 40 },
+      "cosmetic": { "color": "#1a1a2e", "skinTone": "#c09070", "hasHelmet": true },
+      "module": "./character.nova.js"
     }
   ]
 }

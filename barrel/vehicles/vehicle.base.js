@@ -63,6 +63,15 @@ export class BaseVehicle {
     this.entry = entry;
     this.profile = { ...DEFAULT_HANDLING_PROFILE, ...(entry.tuning || {}) };
     this.profile.blend = { ...DEFAULT_HANDLING_PROFILE.blend, ...(entry.tuning?.blend || {}) };
+    // Apply character perk modifiers (multipliers on base values)
+    const perk = entry.tuning?._charPerk;
+    if (perk) {
+      for (const [key, mult] of Object.entries(perk)) {
+        if (typeof mult === 'number' && typeof this.profile[key] === 'number') {
+          this.profile[key] *= mult;
+        }
+      }
+    }
     this.tuning = this.profile; // alias for wzk4 compat
     this.cosmetic = entry.cosmetic || {};
     this.ctx = ctx;

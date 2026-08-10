@@ -52,7 +52,16 @@ class RaceScene {
     // Spawn player vehicle
     const startPos = trackEntry.module.getStartPosition(this._built);
     const playerStart = [startPos.x, 1, startPos.z];
-    this._player = vehEntry.module.spawn(vehEntry.entry, { engine, physics: engine.physics, renderer: engine.renderer, input: engine.input }, playerStart);
+    // Apply character perk to vehicle entry (modifies a copy, not the manifest)
+    const charEntry = characterId ? engine.resolver.resolve('characters', characterId) : null;
+    const vehEntryWithPerk = charEntry?.entry?.passivePerk?.handlingMods
+      ? { ...vehEntry.entry, tuning: { ...vehEntry.entry.tuning, _charPerk: charEntry.entry.passivePerk.handlingMods } }
+      : vehEntry.entry;
+    this._player = vehEntry.module.spawn(vehEntryWithPerk, { engine, physics: engine.physics, renderer: engine.renderer, input: engine.input }, playerStart);
+    // Store character perk for vehicle to apply
+    if (this._player && charEntry?.entry?.passivePerk?.handlingMods) {
+      this._player._charPerk = charEntry.entry.passivePerk.handlingMods;
+    }
 
     // Spawn 3 AI opponents (reuse same vehicle module for simplicity; can pick random)
     const allVehicles = engine.resolver.listWithModules('vehicles');
