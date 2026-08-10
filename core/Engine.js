@@ -13,6 +13,7 @@ import { PhysicsWorld } from './PhysicsWorld.js';
 import { AudioManager } from './AudioManager.js';
 import { EntityManager } from './EntityManager.js';
 import { SceneManager } from './SceneManager.js';
+import { saveSystem } from './SaveSystem.js';
 
 class Engine {
   constructor() {
@@ -29,6 +30,7 @@ class Engine {
     this.audio = new AudioManager();
     this.entities = new EntityManager();
     this.scenes = new SceneManager();
+    this.save = saveSystem;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -62,6 +64,10 @@ class Engine {
     await this.physics.init(engineConfig.physics);
     await this.audio.init(engineConfig.audio);
     this.input.init(inputConfig);
+    await this.save.init();
+
+    // Apply saved settings to subsystems
+    this._applySavedSettings();
 
     // 2. Schemas
     for (const [category, schema] of Object.entries(schemas)) {
@@ -178,6 +184,31 @@ class Engine {
       this.bus.emit('diagnostics:tick', { ...this._diagnostics });
     }
   };
+
+  _applySavedSettings() {
+    // Apply audio volumes
+    const audio = this.save.get('settings.audio') || {};
+    if (audio.master != null) this.audio.setBusVolume('master', audio.master);
+    if (audio.music != null) this.audio.setBusVolume('music', audio.music);
+    if (audio.sfx != null) this.audio.setBusVolume('sfx', audio.sfx);
+    if (audio.voice != null) this.audio.setBusVolume('voice', audio.voice);
+    if (audio.ui != null) this.audio.setBusVolume('ui', audio.ui);
+    if (audio.engine != null) this.audio.setBusVolume('engine', audio.engine);
+
+    // Apply video settings
+    const video = this.save.get('settings.video') || {};
+    if (video.fov != null) {
+      const cam = this.renderer.getCamera();
+      if (cam) cam.fov = video.fov, cam.updateProjectionMatrix();
+    }
+    if (video.quality != null) {
+      try { this.renderer.setQuality(video.quality); } catch (e) {}
+    }
+
+    // Apply control settings
+    const controls = this.save.get('settings.controls') || {};
+    if (controls.deadzone != null) this.input._deadzone = controls.deadzone;
+  }
 
   _setupDiagnostics() {
     const overlay = document.createElement('div');

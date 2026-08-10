@@ -57,12 +57,28 @@ export async function mount(root, payload, ctx) {
   root.appendChild(screen);
 
   root.querySelectorAll('input[type="range"][data-bus]').forEach(input => {
+    // Load saved value
+    const bus = input.dataset.bus;
+    const savedVol = engine.save.get(`settings.audio.${bus}`);
+    if (savedVol != null) {
+      input.value = Math.round(savedVol * 100);
+      input.nextElementSibling.textContent = input.value;
+    }
     input.addEventListener('input', (e) => {
-      const bus = e.target.dataset.bus;
       const vol = e.target.value / 100;
       engine.audio.setBusVolume(bus, vol);
+      engine.save.set(`settings.audio.${bus}`, vol);
       e.target.nextElementSibling.textContent = e.target.value;
     });
+  });
+  // Persist toggles
+  root.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+    const keys = ['positional', 'voiceChat', 'subtitles'];
+    const k = keys[i];
+    if (!k) return;
+    const saved = engine.save.get(`settings.audio.${k}`);
+    if (saved != null) cb.checked = saved;
+    cb.addEventListener('change', () => engine.save.set(`settings.audio.${k}`, cb.checked));
   });
   root.querySelectorAll('.settings-nav-item').forEach(item => {
     item.addEventListener('click', () => {
