@@ -17,6 +17,7 @@ import { saveSystem } from './SaveSystem.js';
 import { progression } from './ProgressionSystem.js';
 import { garage } from './GarageSystem.js';
 import { particlePool } from './ParticlePool.js';
+import { battlePass } from './BattlePassSystem.js';
 
 class Engine {
   constructor() {
@@ -37,6 +38,7 @@ class Engine {
     this.progression = progression;
     this.garage = garage;
     this.particles = particlePool;
+    this.battlePass = battlePass;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -74,6 +76,7 @@ class Engine {
     this.progression.init(this.save);
     this.garage.init(this.save, []); // catalog loaded later by main.js
     this.particles.init(this.renderer.getScene());
+    this.battlePass.init(this.save);
 
     // Apply saved settings to subsystems
     this._applySavedSettings();
