@@ -15,7 +15,7 @@
   },
   "modes": {
     "_comment": "Mode IDs are resolved through barrel/modes/manifest.json. Order here defines menu order.",
-    "available": ["circuit", "sprint", "drift"],
+    "available": ["circuit", "sprint", "drift", "elimination", "derby", "battleRoyale", "teamRelay", "timeTrial"],
     "default": "circuit"
   },
   "progression": {
@@ -35,12 +35,40 @@
     "aiFillThreshold": 4
   },
   "ai": {
+    "_comment": "AI Opponent System Configuration - Full AAA-quality AI settings",
     "rubberBand": {
       "enabled": true,
       "catchupFactor": 1.15,
-      "runawayFactor": 0.92
+      "runawayFactor": 0.92,
+      "activationDelay": 5000,
+      "maxBoost": 0.15,
+      "maxSlowdown": 0.12
     },
     "difficultyLevels": ["relaxed", "normal", "aggressive", "brutal"],
-    "defaultDifficulty": "normal"
+    "defaultDifficulty": "normal",
+    "personalities": ["balanced"],
+    "maxOpponents": 11,
+    "reactionTimeBase": 0.25,
+    "mistakeFrequency": 0.1,
+    "pathfinding": {
+      "waypointLookaheadBase": 12,
+      "waypointLookaheadMax": 20,
+      "steeringSmoothing": 0.08,
+      "cornerBrakeThreshold": 0.7,
+      "apexOffset": 0.3
+    },
+    "combat": {
+      "itemUseChance": 0.7,
+      "targetRefreshRate": 500,
+      "dodgeReactionWindow": 300,
+      "shieldUseThreshold": 0.6
+    },
+    "mistakes": {
+      "enabled": true,
+      "baseFrequency": 0.1,
+      "minInterval": 2000,
+      "maxConsecutive": 2
+    },
+    "debug": false
   }
 }

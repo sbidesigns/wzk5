@@ -44,7 +44,7 @@ export function onMatchStart(ctx, matchState) {
 
 function _loadHighScores(ctx) {
   try {
-    const saved = localStorage.getItem('wzk3_drift_highscores');
+    const saved = localStorage.getItem('wzk5_drift_highscores');
     return saved ? JSON.parse(saved) : [
       { player: 'Ghost', score: 50000, date: '2024-01-01' }
     ];
@@ -260,7 +260,7 @@ function _checkHighScore(ctx, score) {
     
     // Save
     try {
-      localStorage.setItem('wzk3_drift_highscores', JSON.stringify(matchState.highScores));
+      localStorage.setItem('wzk5_drift_highscores', JSON.stringify(matchState.highScores));
     } catch (e) {
       console.warn('Could not save high scores:', e);
     }

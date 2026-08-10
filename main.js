@@ -19,12 +19,37 @@ import { uiShell } from './ui/ui-shell.js';
 import { uiRouter } from './ui/ui-router.js';
 import * as THREE from 'three';
 
+// NEW: Multiplayer integration
+import { onlineMultiplayer } from './network/OnlineMultiplayer.js';
+
+// NEW: UI Components for race scene
+import RaceHUD from './ui/components/RaceHUD.js';
+import Minimap from './ui/components/Minimap.js';
+import AbilityUI from './ui/components/AbilityUI.js';
+
+// NEW: Core systems
+import { getItemForPosition, getDistributionTable } from './core/SmartItemDistribution.js';
+import { ghostVisualizer } from './core/GhostVisualizer.js';
+import { cloudSaveSystem } from './core/CloudSaveSystem.js';
+import { i18n } from './locales/LocalizationSystem.js';
+
 // Expose globally so barrel modules (which don't import the engine) can access it
 window.__engine = engine;
 window.__uiRouter = uiRouter;
 window.__uiShell = uiShell;
 // Some legacy/inline code may reference window.THREE — keep it available for diagnostics
 window.THREE = THREE;
+
+// NEW: Expose new systems globally for barrel module access
+window.__onlineMultiplayer = onlineMultiplayer;
+window.__RaceHUD = RaceHUD;
+window.__Minimap = Minimap;
+window.__AbilityUI = AbilityUI;
+window.__getItemForPosition = getItemForPosition;
+window.__getDistributionTable = getDistributionTable;
+window.__ghostVisualizer = ghostVisualizer;
+window.__cloudSaveSystem = cloudSaveSystem;
+window.__i18n = i18n;
 
 const VENDOR_VERSIONS = {
   three: '0.160.0',
@@ -124,7 +149,15 @@ async function main() {
       console.warn('[main] Parts catalog load failed:', e.message);
     }
 
-    if (bootProgress) bootProgress.style.width = '90%';
+    if (bootProgress) bootProgress.style.width = '88%';
+
+    // NEW: Initialize localization system (before UI)
+    try {
+      await i18n.init();
+      console.log('[main] Localization initialized:', i18n.getLocale());
+    } catch (e) {
+      console.warn('[main] Localization init failed, using defaults:', e.message);
+    }
 
     // 8. Init UI shell + router
     uiShell.init();
@@ -150,6 +183,35 @@ async function main() {
       uiRouter.push('results', { results });
     });
 
+    if (bootProgress) bootProgress.style.width = '94%';
+
+    // NEW: Initialize cloud save system (after engine is ready)
+    try {
+      const savedToken = localStorage.getItem('wzk5_auth_token');
+      if (savedToken) {
+        await cloudSaveSystem.init(savedToken);
+        console.log('[main] Cloud save initialized');
+      }
+    } catch (e) {
+      console.warn('[main] Cloud save init failed:', e.message);
+    }
+
+    // NEW: Initialize multiplayer system (ready but not connected)
+    onlineMultiplayer.on('stateChange', (newState, oldState) => {
+      console.log(`[main] Multiplayer state: ${oldState} -> ${newState}`);
+      engine.bus.emit('multiplayer:stateChange', { newState, oldState });
+    });
+    
+    onlineMultiplayer.on('error', (message, error) => {
+      console.error('[main] Multiplayer error:', message, error);
+      engine.bus.emit('multiplayer:error', { message, error });
+    });
+    
+    console.log('[main] Multiplayer system ready');
+
+    // NEW: Wire up item distribution to global scope for race scene usage
+    engine._smartItemDistribution = { getItemForPosition, getDistributionTable };
+
     if (bootProgress) bootProgress.style.width = '100%';
 
     // 9. Navigate to splash
@@ -170,6 +232,7 @@ async function main() {
 
     console.log('[main] Warzone Kart booted. Vendor:', VENDOR_VERSIONS);
     console.log('[main] Resolver stats:', engine.resolver.stats());
+    console.log('[main] New systems: Multiplayer ✓, HUD ✓, Minimap ✓, Items ✓, Ghost ✓, Cloud ✓, i18n ✓');
   } catch (err) {
     console.error('[main] BOOT FAILED:', err);
     const fallback = document.getElementById('boot-fallback');

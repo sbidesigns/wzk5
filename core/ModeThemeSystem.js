@@ -55,7 +55,7 @@ class ModeThemeSystem {
       rootElement.dataset.theme = themeId;
     }
     // Emit event for audio crossfade
-    EventBus_emit('modetheme:applied', { themeId, theme });
+    if (window.__engine?.bus) window.__engine.bus.emit('modetheme:applied', { themeId, theme });
     return theme;
   }
 

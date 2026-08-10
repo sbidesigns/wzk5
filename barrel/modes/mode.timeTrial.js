@@ -31,7 +31,7 @@ function _loadGhostData(ctx) {
   // For now, return null (no ghost) or generate sample data
   
   try {
-    const saved = localStorage.getItem(`wzk3_tt_ghost_${ctx.trackId}`);
+    const saved = localStorage.getItem(`wzk5_tt_ghost_${ctx.trackId}`);
     if (saved) {
       return JSON.parse(saved);
     }
@@ -175,7 +175,7 @@ function _saveGhostData(ctx, matchState) {
   };
   
   try {
-    localStorage.setItem(`wzk3_tt_ghost_${ctx.trackId}`, JSON.stringify(ghostData));
+    localStorage.setItem(`wzk5_tt_ghost_${ctx.trackId}`, JSON.stringify(ghostData));
   } catch (e) {
     console.warn('Could not save ghost data:', e);
   }
