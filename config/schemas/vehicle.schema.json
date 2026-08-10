@@ -6,7 +6,7 @@
   "properties": {
     "id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
     "displayName": { "type": "string", "minLength": 2 },
-    "class":       { "type": "string", "enum": ["sports", "muscle", "agile", "heavy", "atv", "super", "buggy", "motorcycle", "foot"] },
+    "class":       { "type": "string", "enum": ["sports", "muscle", "agile", "heavy", "atv", "super", "buggy", "motorcycle", "foot", "electric", "monster"] },
     "vehicleType": { "type": "string", "enum": ["CAR", "ATV", "BUGGY", "MOTORCYCLE", "FOOT"] },
     "stats": {
       "type": "object",
@@ -78,7 +78,7 @@
       "type": "object",
       "required": ["type"],
       "properties": {
-        "type":  { "type": "string", "enum": ["default", "level", "level_5", "level_10", "level_15", "paid", "achievement"] },
+        "type":  { "type": "string", "enum": ["default", "level", "level_5", "level_10", "level_15", "level_20", "level_30", "level_40", "paid", "achievement"] },
         "value": { "type": ["number", "string"] }
       }
     },

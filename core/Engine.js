@@ -23,6 +23,7 @@ import { mapVote } from './MapVoteSystem.js';
 import { modeTheme } from './ModeThemeSystem.js';
 import { replay } from './ReplaySystem.js';
 import { career } from './CareerSystem.js';
+import { splitscreen } from './SplitscreenSystem.js';
 
 class Engine {
   constructor() {
@@ -49,6 +50,7 @@ class Engine {
     this.modeTheme = modeTheme;
     this.replay = replay;
     this.career = career;
+    this.splitscreen = splitscreen;
 
     this._running = false;
     this._lastFrameTime = 0;

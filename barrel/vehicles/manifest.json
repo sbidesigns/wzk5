@@ -137,6 +137,46 @@
       "cosmetic": { "skinTone": "#e0b090", "hasHelmet": true, "modelUrl": null },
       "unlock": { "type": "default" },
       "module": "./vehicle.foot.js"
+    },
+    {
+      "id": "bolt-01",
+      "displayName": "Bolt EV",
+      "class": "electric",
+      "vehicleType": "CAR",
+      "stats": { "topSpeed": 8, "acceleration": 10, "handling": 8, "weight": 5 },
+      "tuning": {
+        "blend": { "kart": 0.4, "nfsu": 0.4, "cod": 0.2 },
+        "enginePower": 2000, "maxSteer": 0.6,
+        "hopImpulse": 7.0, "driftGripMultiplier": 0.3, "driftChargeRate": 60,
+        "driftChargeTiers": [0, 35, 70, 100], "boostDuration": [0.4, 0.8, 1.4], "boostMultiplier": [1.15, 1.3, 1.5],
+        "slipAnglePeak": 0.17, "lateralGripFloor": 0.4, "burnoutTorqueBoost": 1.0, "burnoutHeatRate": 0.3, "burnoutHeatThreshold": 0.5,
+        "weightTransfer": 0.5, "airPitchLerp": 2.5, "airRollLerp": 2.0, "landingSquash": 0.3, "ragdollThreshold": 14,
+        "suspensionStiffness": 35, "suspensionDamping": 5, "bodyRollFactor": 0.25, "chassisMass": 700,
+        "frictionSlip": 1.9, "wheelRadius": 0.4, "nitrousCapacity": 150, "health": 90
+      },
+      "cosmetic": { "bodyColor": "#00e5ff", "accentColor": "#ffffff", "wheelColor": "#1a1a1a", "modelUrl": null, "modelScale": 1.0 },
+      "unlock": { "type": "level_20" },
+      "module": "./vehicle.bolt.js"
+    },
+    {
+      "id": "mammoth-01",
+      "displayName": "Mammoth",
+      "class": "monster",
+      "vehicleType": "ATV",
+      "stats": { "topSpeed": 5, "acceleration": 6, "handling": 4, "weight": 10 },
+      "tuning": {
+        "blend": { "kart": 0.2, "nfsu": 0.3, "cod": 0.5 },
+        "enginePower": 3000, "maxSteer": 0.5,
+        "hopImpulse": 12.0, "driftGripMultiplier": 0.4, "driftChargeRate": 40,
+        "driftChargeTiers": [0, 40, 80, 100], "boostDuration": [0.5, 1.0, 1.8], "boostMultiplier": [1.2, 1.4, 1.7],
+        "slipAnglePeak": 0.25, "lateralGripFloor": 0.3, "burnoutTorqueBoost": 1.6, "burnoutHeatRate": 1.0, "burnoutHeatThreshold": 0.25,
+        "weightTransfer": 1.0, "airPitchLerp": 3.5, "airRollLerp": 3.0, "landingSquash": 0.8, "ragdollThreshold": 18,
+        "suspensionStiffness": 25, "suspensionDamping": 4, "bodyRollFactor": 0.6, "chassisMass": 1500,
+        "frictionSlip": 1.3, "wheelRadius": 0.7, "nitrousCapacity": 60, "health": 200
+      },
+      "cosmetic": { "bodyColor": "#4a2c2a", "accentColor": "#ffaa00", "wheelColor": "#1a1a1a", "modelUrl": null, "modelScale": 1.3 },
+      "unlock": { "type": "level_30" },
+      "module": "./vehicle.mammoth.js"
     }
   ]
 }
