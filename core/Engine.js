@@ -24,6 +24,11 @@ import { modeTheme } from './ModeThemeSystem.js';
 import { replay } from './ReplaySystem.js';
 import { career } from './CareerSystem.js';
 import { splitscreen } from './SplitscreenSystem.js';
+import { accessibility } from './AccessibilitySystem.js';
+import { mobileControls } from './MobileControls.js';
+import { leaderboard } from './LeaderboardSystem.js';
+import { achievements } from './AchievementSystem.js';
+import { tournament } from './TournamentSystem.js';
 
 class Engine {
   constructor() {
@@ -51,6 +56,11 @@ class Engine {
     this.replay = replay;
     this.career = career;
     this.splitscreen = splitscreen;
+    this.accessibility = accessibility;
+    this.mobileControls = mobileControls;
+    this.leaderboard = leaderboard;
+    this.achievements = achievements;
+    this.tournament = tournament;
 
     this._running = false;
     this._lastFrameTime = 0;
@@ -91,6 +101,11 @@ class Engine {
     this.battlePass.init(this.save);
     this.botBackfill.init(this.save);
     this.career.init(this.save);
+    this.accessibility.init(this.save);
+    this.mobileControls.init(this.save);
+    this.leaderboard.init(this.save);
+    this.achievements.init(this.save);
+    this.tournament.init(this.save);
 
     // Apply saved settings to subsystems
     this._applySavedSettings();
