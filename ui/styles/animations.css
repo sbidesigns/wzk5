@@ -1,0 +1,135 @@
+/* ui/styles/animations.css — reusable keyframes + transition utilities. GSAP handles complex tweens. */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes irisOpen {
+  from { clip-path: circle(0% at 50% 50%); }
+  to { clip-path: circle(150% at 50% 50%); }
+}
+
+@keyframes parallaxRise {
+  from { opacity: 0; transform: translateY(80px) scale(0.98); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes riseBlur {
+  from { opacity: 0; transform: translateY(60px) scale(1.02); filter: blur(12px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.97); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 46, 0); }
+  50% { box-shadow: 0 0 24px 4px rgba(255, 77, 46, 0.4); }
+}
+
+@keyframes gridScroll {
+  from { background-position: 0 0; }
+  to { background-position: 80px 80px; }
+}
+
+/* Reusable utility classes */
+.anim-fade-in    { animation: fadeIn var(--duration-base) var(--ease-out-expo) both; }
+.anim-slide-up   { animation: slideUp var(--duration-screen) var(--ease-out-expo) both; }
+.anim-slide-down { animation: slideDown var(--duration-screen) var(--ease-out-expo) both; }
+.anim-slide-left { animation: slideLeft var(--duration-screen) var(--ease-out-expo) both; }
+.anim-scale-in   { animation: scaleIn var(--duration-base) var(--ease-back-out) both; }
+.anim-parallax-rise { animation: parallaxRise var(--duration-screen) var(--ease-out-expo) both; }
+.anim-rise-blur  { animation: riseBlur var(--duration-screen) var(--ease-out-expo) both; }
+.anim-iris       { animation: irisOpen var(--duration-screen) var(--ease-in-out-circ) both; }
+.anim-float      { animation: floatY 4s ease-in-out infinite; }
+.anim-glow       { animation: glow 2.4s ease-in-out infinite; }
+
+/* Staggered children helper */
+.stagger > * { opacity: 0; animation: slideUp var(--duration-base) var(--ease-out-expo) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; }
+.stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger > *:nth-child(8) { animation-delay: 0.40s; }
+.stagger > *:nth-child(9) { animation-delay: 0.45s; }
+.stagger > *:nth-child(10) { animation-delay: 0.50s; }
+
+/* Shimmer for loading */
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Parallax background grid */
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,77,46,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,77,46,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridScroll 8s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+.bg-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+
+.bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: floatY 6s ease-in-out infinite;
+}

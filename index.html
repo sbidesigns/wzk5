@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#05060a" />
+  <title>WARZONE KART — Neon Underground</title>
+
+  <!--
+    Vendor loading strategy (pinned in vendor/vendor.manifest.json):
+      - howler, gsap, localforage: UMD builds, loaded as classic scripts (expose globals).
+      - three.js + cannon-es: ESM-only, loaded via importmap + ES module imports.
+    The importmap MUST appear before any <script type="module"> that uses bare specifiers like 'three'.
+  -->
+
+  <!-- Importmap: maps bare specifiers 'three' and 'three/addons/*' to pinned CDN URLs -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+      "cannon-es": "https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"
+    }
+  }
+  </script>
+
+  <!-- UMD globals (these execute synchronously during parse, before module scripts) -->
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles (design tokens first, then animations, components, screens) -->
+  <link rel="stylesheet" href="./ui/styles/tokens.css" />
+  <link rel="stylesheet" href="./ui/styles/animations.css" />
+  <link rel="stylesheet" href="./ui/styles/components.css" />
+  <link rel="stylesheet" href="./ui/styles/screens.css" />
+</head>
+<body>
+  <!-- Vendor load status (replaced by main.js once engine boots) -->
+  <div id="boot-fallback" style="position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#05060a; color:#f5f6fa; font-family:system-ui; flex-direction:column; gap:16px; z-index:1000;">
+    <div style="font-family:'Bebas Neue',Impact,sans-serif; font-size:48px; letter-spacing:0.18em; background:linear-gradient(135deg,#ff4d2e 0%,#ff8c00 40%,#ffd23f 100%); -webkit-background-clip:text; background-clip:text; color:transparent;">WARZONE KART</div>
+    <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:#a0a4b0;">Loading engine…</div>
+    <div style="width:240px; height:2px; background:#12141f; border-radius:999px; overflow:hidden;">
+      <div id="boot-progress" style="height:100%; width:0%; background:linear-gradient(90deg,#ff4d2e,#ffd23f); transition:width 0.3s ease;"></div>
+    </div>
+    <noscript>
+      <div style="color:#ff3d5a; max-width:400px; text-align:center; margin-top:16px;">JavaScript is required. This game uses ES modules, WebGL, and the Gamepad API.</div>
+    </noscript>
+  </div>
+
+  <!-- main.js is an ES module; uses importmap to resolve 'three' and 'cannon-es' -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

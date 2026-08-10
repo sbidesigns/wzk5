@@ -1,0 +1,88 @@
+{
+  "$id": "vehicle.schema.json",
+  "_comment": "Schema for barrel/vehicles/manifest.json entries. The Resolver rejects any entry that doesn't match.",
+  "type": "object",
+  "required": ["id", "displayName", "class", "vehicleType", "stats", "tuning", "unlock", "module"],
+  "properties": {
+    "id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "displayName": { "type": "string", "minLength": 2 },
+    "class":       { "type": "string", "enum": ["sports", "muscle", "agile", "heavy", "atv", "super", "buggy", "motorcycle", "foot"] },
+    "vehicleType": { "type": "string", "enum": ["CAR", "ATV", "BUGGY", "MOTORCYCLE", "FOOT"] },
+    "stats": {
+      "type": "object",
+      "required": ["topSpeed", "acceleration", "handling", "weight"],
+      "properties": {
+        "topSpeed":     { "type": "integer", "minimum": 1, "maximum": 10 },
+        "acceleration": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "handling":     { "type": "integer", "minimum": 1, "maximum": 10 },
+        "weight":       { "type": "integer", "minimum": 1, "maximum": 10 }
+      }
+    },
+    "tuning": {
+      "type": "object",
+      "properties": {
+        "blend": {
+          "type": "object",
+          "properties": {
+            "kart": { "type": "number", "minimum": 0, "maximum": 1 },
+            "nfsu": { "type": "number", "minimum": 0, "maximum": 1 },
+            "cod":  { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "enginePower":          { "type": "number", "minimum": 100,  "maximum": 5000 },
+        "maxSteer":             { "type": "number", "minimum": 0.1,  "maximum": 1.0 },
+        "driftGripMultiplier":  { "type": "number", "minimum": 0.05, "maximum": 1.0 },
+        "burnoutTorqueBoost":   { "type": "number", "minimum": 0.5,  "maximum": 3.0 },
+        "suspensionStiffness":  { "type": "number", "minimum": 5,   "maximum": 100 },
+        "suspensionDamping":    { "type": "number", "minimum": 0.1, "maximum": 20 },
+        "bodyRollFactor":       { "type": "number", "minimum": 0,   "maximum": 1.0 },
+        "chassisMass":          { "type": "number", "minimum": 50,  "maximum": 2000 },
+        "frictionSlip":         { "type": "number", "minimum": 0.5, "maximum": 3.0 },
+        "wheelRadius":          { "type": "number", "minimum": 0.2, "maximum": 1.0 },
+        "nitrousCapacity":      { "type": "number", "minimum": 0,   "maximum": 200 },
+        "health":               { "type": "number", "minimum": 1,   "maximum": 500 },
+        "leanFactor":           { "type": "number", "minimum": 0,   "maximum": 3.0 },
+        "hopImpulse":           { "type": "number", "minimum": 0,   "maximum": 20 },
+        "driftChargeRate":      { "type": "number", "minimum": 0,   "maximum": 200 },
+        "slipAnglePeak":        { "type": "number", "minimum": 0.01,"maximum": 1.0 },
+        "lateralGripFloor":     { "type": "number", "minimum": 0,   "maximum": 1.0 },
+        "burnoutHeatRate":      { "type": "number", "minimum": 0,   "maximum": 5.0 },
+        "burnoutHeatThreshold": { "type": "number", "minimum": 0,   "maximum": 1.0 },
+        "weightTransfer":       { "type": "number", "minimum": 0,   "maximum": 2.0 },
+        "airPitchLerp":         { "type": "number", "minimum": 0,   "maximum": 10 },
+        "airRollLerp":          { "type": "number", "minimum": 0,   "maximum": 10 },
+        "landingSquash":        { "type": "number", "minimum": 0,   "maximum": 2.0 },
+        "ragdollThreshold":     { "type": "number", "minimum": 5,   "maximum": 50 },
+        "moveSpeed":            { "type": "number", "minimum": 1,   "maximum": 20 },
+        "sprintMultiplier":     { "type": "number", "minimum": 1,   "maximum": 5 },
+        "jumpForce":            { "type": "number", "minimum": 0,   "maximum": 20 },
+        "staminaDrain":         { "type": "number", "minimum": 0,   "maximum": 100 },
+        "staminaRegen":         { "type": "number", "minimum": 0,   "maximum": 100 },
+        "slideDuration":        { "type": "number", "minimum": 0,   "maximum": 10 },
+        "doubleJumpPowerup":    { "type": "boolean" }
+      }
+    },
+    "cosmetic": {
+      "type": "object",
+      "properties": {
+        "bodyColor":  { "type": "string" },
+        "accentColor":{ "type": "string" },
+        "wheelColor": { "type": "string" },
+        "skinTone":   { "type": "string" },
+        "modelUrl":   { "type": ["string", "null"] },
+        "modelScale": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "hasHelmet":  { "type": "boolean" }
+      }
+    },
+    "unlock": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type":  { "type": "string", "enum": ["default", "level", "level_5", "level_10", "level_15", "paid", "achievement"] },
+        "value": { "type": ["number", "string"] }
+      }
+    },
+    "module": { "type": "string", "pattern": "^\\./vehicle\\." }
+  },
+  "requiredInterface": ["spawn", "update", "getSpeedKmh", "applyBoost", "despawn"]
+}

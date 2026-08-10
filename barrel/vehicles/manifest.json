@@ -1,0 +1,142 @@
+{
+  "$schema": "../../config/schemas/vehicle.schema.json",
+  "category": "vehicles",
+  "entries": [
+    {
+      "id": "spectre",
+      "displayName": "Spectre GT",
+      "class": "sports",
+      "vehicleType": "CAR",
+      "stats": { "topSpeed": 9, "acceleration": 8, "handling": 9, "weight": 4 },
+      "tuning": {
+        "blend": { "kart": 0.5, "nfsu": 0.4, "cod": 0.1 },
+        "enginePower": 1800, "maxSteer": 0.55,
+        "hopImpulse": 8.0, "driftGripMultiplier": 0.35, "driftChargeRate": 65,
+        "driftChargeTiers": [0, 35, 70, 100], "boostDuration": [0.4, 0.8, 1.6], "boostMultiplier": [1.15, 1.3, 1.6],
+        "slipAnglePeak": 0.18, "lateralGripFloor": 0.35, "burnoutTorqueBoost": 1.4, "burnoutHeatRate": 0.8, "burnoutHeatThreshold": 0.3,
+        "weightTransfer": 0.6, "airPitchLerp": 2.5, "airRollLerp": 1.8, "landingSquash": 0.4, "ragdollThreshold": 14,
+        "suspensionStiffness": 30, "suspensionDamping": 4.5, "bodyRollFactor": 0.35, "chassisMass": 600,
+        "frictionSlip": 1.8, "wheelRadius": 0.4, "nitrousCapacity": 100, "health": 100
+      },
+      "cosmetic": { "bodyColor": "#ff4d2e", "accentColor": "#ffd23f", "wheelColor": "#0a0a0a", "modelUrl": null, "modelScale": 1, "hasHelmet": false },
+      "unlock": { "type": "default" },
+      "module": "./vehicle.sports.js"
+    },
+    {
+      "id": "titan",
+      "displayName": "Titan Muscle",
+      "class": "muscle",
+      "vehicleType": "CAR",
+      "stats": { "topSpeed": 7, "acceleration": 10, "handling": 5, "weight": 9 },
+      "tuning": {
+        "blend": { "kart": 0.3, "nfsu": 0.6, "cod": 0.1 },
+        "enginePower": 2400, "maxSteer": 0.45,
+        "hopImpulse": 6.0, "driftGripMultiplier": 0.25, "driftChargeRate": 50,
+        "driftChargeTiers": [0, 40, 80, 100], "boostDuration": [0.5, 1.0, 2.0], "boostMultiplier": [1.2, 1.4, 1.8],
+        "slipAnglePeak": 0.22, "lateralGripFloor": 0.25, "burnoutTorqueBoost": 1.8, "burnoutHeatRate": 1.2, "burnoutHeatThreshold": 0.25,
+        "weightTransfer": 0.85, "airPitchLerp": 2.0, "airRollLerp": 1.5, "landingSquash": 0.6, "ragdollThreshold": 16,
+        "suspensionStiffness": 35, "suspensionDamping": 5, "bodyRollFactor": 0.55, "chassisMass": 900,
+        "frictionSlip": 1.6, "wheelRadius": 0.45, "nitrousCapacity": 80, "health": 150
+      },
+      "cosmetic": { "bodyColor": "#2e4d4d", "accentColor": "#ff6b35", "wheelColor": "#1a1a1a", "modelUrl": null, "modelScale": 1.05 },
+      "unlock": { "type": "default" },
+      "module": "./vehicle.muscle.js"
+    },
+    {
+      "id": "vixen",
+      "displayName": "Vixen Drift",
+      "class": "sports",
+      "vehicleType": "CAR",
+      "stats": { "topSpeed": 8, "acceleration": 9, "handling": 10, "weight": 3 },
+      "tuning": {
+        "blend": { "kart": 0.7, "nfsu": 0.2, "cod": 0.1 },
+        "enginePower": 1600, "maxSteer": 0.65,
+        "hopImpulse": 10.0, "driftGripMultiplier": 0.15, "driftChargeRate": 80,
+        "driftChargeTiers": [0, 30, 60, 100], "boostDuration": [0.3, 0.6, 1.2], "boostMultiplier": [1.1, 1.25, 1.5],
+        "slipAnglePeak": 0.15, "lateralGripFloor": 0.45, "burnoutTorqueBoost": 1.3, "burnoutHeatRate": 0.6, "burnoutHeatThreshold": 0.35,
+        "weightTransfer": 0.3, "airPitchLerp": 3.0, "airRollLerp": 2.2, "landingSquash": 0.2, "ragdollThreshold": 12,
+        "suspensionStiffness": 28, "suspensionDamping": 4, "bodyRollFactor": 0.2, "chassisMass": 450,
+        "frictionSlip": 2.0, "wheelRadius": 0.38, "nitrousCapacity": 120, "health": 80
+      },
+      "cosmetic": { "bodyColor": "#9b2dff", "accentColor": "#ff2edf", "wheelColor": "#0a0a0a", "modelUrl": null, "modelScale": 0.95 },
+      "unlock": { "type": "default" },
+      "module": "./vehicle.vixen.js"
+    },
+    {
+      "id": "atv-01",
+      "displayName": "Raptor ATV",
+      "class": "atv",
+      "vehicleType": "ATV",
+      "stats": { "topSpeed": 6, "acceleration": 7, "handling": 6, "weight": 5 },
+      "tuning": {
+        "blend": { "kart": 0.3, "nfsu": 0.3, "cod": 0.4 },
+        "enginePower": 1400, "maxSteer": 0.65,
+        "hopImpulse": 9.0, "driftGripMultiplier": 0.3, "driftChargeRate": 55,
+        "driftChargeTiers": [0, 35, 70, 100], "boostDuration": [0.4, 0.8, 1.4], "boostMultiplier": [1.15, 1.3, 1.5],
+        "slipAnglePeak": 0.2, "lateralGripFloor": 0.3, "burnoutTorqueBoost": 1.5, "burnoutHeatRate": 0.7, "burnoutHeatThreshold": 0.3,
+        "weightTransfer": 0.8, "airPitchLerp": 3.0, "airRollLerp": 2.5, "landingSquash": 0.7, "ragdollThreshold": 13,
+        "suspensionStiffness": 20, "suspensionDamping": 3.5, "bodyRollFactor": 0.45, "chassisMass": 500,
+        "frictionSlip": 1.4, "wheelRadius": 0.5, "nitrousCapacity": 90, "health": 90
+      },
+      "cosmetic": { "bodyColor": "#4caf50", "accentColor": "#ff9800", "wheelColor": "#333333", "modelUrl": null, "modelScale": 1.1 },
+      "unlock": { "type": "level_5" },
+      "module": "./vehicle.atv.js"
+    },
+    {
+      "id": "buggy-01",
+      "displayName": "Dune Buggy",
+      "class": "buggy",
+      "vehicleType": "BUGGY",
+      "stats": { "topSpeed": 5, "acceleration": 6, "handling": 7, "weight": 4 },
+      "tuning": {
+        "blend": { "kart": 0.3, "nfsu": 0.3, "cod": 0.4 },
+        "enginePower": 1200, "maxSteer": 0.7,
+        "hopImpulse": 10.0, "driftGripMultiplier": 0.4, "driftChargeRate": 50,
+        "driftChargeTiers": [0, 35, 70, 100], "boostDuration": [0.4, 0.8, 1.4], "boostMultiplier": [1.15, 1.3, 1.5],
+        "slipAnglePeak": 0.22, "lateralGripFloor": 0.35, "burnoutTorqueBoost": 1.2, "burnoutHeatRate": 0.6, "burnoutHeatThreshold": 0.35,
+        "weightTransfer": 0.75, "airPitchLerp": 3.5, "airRollLerp": 2.8, "landingSquash": 0.7, "ragdollThreshold": 12,
+        "suspensionStiffness": 15, "suspensionDamping": 3, "bodyRollFactor": 0.4, "chassisMass": 400,
+        "frictionSlip": 1.2, "wheelRadius": 0.55, "nitrousCapacity": 110, "health": 70
+      },
+      "cosmetic": { "bodyColor": "#795548", "accentColor": "#ffc107", "wheelColor": "#555555", "modelUrl": null, "modelScale": 1.15 },
+      "unlock": { "type": "level_10" },
+      "module": "./vehicle.buggy.js"
+    },
+    {
+      "id": "moto-01",
+      "displayName": "Phantom Cycle",
+      "class": "motorcycle",
+      "vehicleType": "MOTORCYCLE",
+      "stats": { "topSpeed": 10, "acceleration": 10, "handling": 10, "weight": 2 },
+      "tuning": {
+        "blend": { "kart": 0.4, "nfsu": 0.3, "cod": 0.3 },
+        "enginePower": 900, "maxSteer": 0.8,
+        "hopImpulse": 7.0, "driftGripMultiplier": 0.25, "driftChargeRate": 70,
+        "driftChargeTiers": [0, 30, 60, 100], "boostDuration": [0.3, 0.7, 1.3], "boostMultiplier": [1.15, 1.3, 1.5],
+        "slipAnglePeak": 0.16, "lateralGripFloor": 0.4, "burnoutTorqueBoost": 1.1, "burnoutHeatRate": 0.5, "burnoutHeatThreshold": 0.4,
+        "weightTransfer": 0.5, "airPitchLerp": 3.0, "airRollLerp": 2.5, "landingSquash": 0.3, "ragdollThreshold": 15,
+        "suspensionStiffness": 22, "suspensionDamping": 3.5, "bodyRollFactor": 0.25, "chassisMass": 300,
+        "frictionSlip": 1.6, "wheelRadius": 0.38, "leanFactor": 1.5, "nitrousCapacity": 130, "health": 60
+      },
+      "cosmetic": { "bodyColor": "#e91e63", "accentColor": "#9c27b0", "wheelColor": "#111111", "modelUrl": null, "modelScale": 0.9 },
+      "unlock": { "type": "level_15" },
+      "module": "./vehicle.motorcycle.js"
+    },
+    {
+      "id": "runner-01",
+      "displayName": "Sprinter",
+      "class": "foot",
+      "vehicleType": "FOOT",
+      "stats": { "topSpeed": 8, "acceleration": 9, "handling": 10, "weight": 1 },
+      "tuning": {
+        "moveSpeed": 6, "sprintMultiplier": 1.8, "jumpForce": 8,
+        "slideFriction": 0.05, "staminaDrain": 25, "staminaRegen": 15,
+        "slideDuration": 1.5, "doubleJumpPowerup": true,
+        "chassisMass": 80, "health": 100
+      },
+      "cosmetic": { "skinTone": "#e0b090", "hasHelmet": true, "modelUrl": null },
+      "unlock": { "type": "default" },
+      "module": "./vehicle.foot.js"
+    }
+  ]
+}

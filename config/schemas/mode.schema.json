@@ -1,0 +1,33 @@
+{
+  "$id": "mode.schema.json",
+  "type": "object",
+  "required": ["id", "displayName", "module"],
+  "properties": {
+    "id":          { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "displayName": { "type": "string" },
+    "description": { "type": "string" },
+    "category":    { "type": "string" },
+    "icon":        { "type": "string" },
+    "playersMin":  { "type": "integer", "minimum": 1 },
+    "playersMax":  { "type": "integer", "minimum": 1, "maximum": 100 },
+    "estimatedDuration": { "type": "number" },
+    "matchConfig": {
+      "type": "object",
+      "properties": {
+        "laps":         { "type": "integer", "minimum": 0, "maximum": 99 },
+        "maxPlayers":   { "type": "integer", "minimum": 1, "maximum": 100 },
+        "allowItems":   { "type": "boolean" },
+        "allowCombat":  { "type": "boolean" },
+        "timeLimitSec": { "type": "integer", "minimum": 0 },
+        "eliminationInterval": { "type": "number" },
+        "arenaSize":    { "type": "number" },
+        "minArenaSize": { "type": "number" },
+        "shrinkRate":   { "type": "number" },
+        "teams":        { "type": "integer" },
+        "arenaType":    { "type": "string" }
+      }
+    },
+    "module":      { "type": "string", "pattern": "^\\.\\/.*\\.js$" }
+  },
+  "requiredInterface": ["onMatchStart"]
+}

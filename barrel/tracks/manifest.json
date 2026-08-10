@@ -1,0 +1,35 @@
+{
+  "$schema": "../../config/schemas/track.schema.json",
+  "category": "tracks",
+  "entries": [
+    {
+      "id": "downtown",
+      "displayName": "Downtown Underground",
+      "biome": "city-night",
+      "difficulty": 3,
+      "laps": 3,
+      "spline": {
+        "points": [
+          [0, 0, 0], [0, 0, -80], [-30, 0, -140], [-90, 0, -150], [-130, 0, -100],
+          [-130, 0, -20], [-100, 0, 40], [-40, 0, 50], [20, 0, 30], [60, 0, -20],
+          [40, 0, -60], [10, 0, -30], [0, 0, 0]
+        ],
+        "width": 14,
+        "bankingFactor": 0.4
+      },
+      "lighting": {
+        "ambientColor": "#1a1a2e",
+        "sunColor": "#ff4d2e",
+        "sunIntensity": 0.4,
+        "fogColor": "#0a0a14",
+        "fogDensity": 0.012
+      },
+      "props": [
+        { "type": "building", "count": 80, "heightRange": [20, 80], "color": "#0a0c14" },
+        { "type": "streetlight", "count": 40, "color": "#ffd23f" },
+        { "type": "neon-sign", "count": 30, "colors": ["#ff4d2e", "#00e5ff", "#ffd23f"] }
+      ],
+      "module": "./track.downtown.js"
+    }
+  ]
+}
